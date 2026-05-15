@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pink English</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#fff7fb;
+      color:#333;
+      overflow-x:hidden;
+    }
+
+    /* SCROLLBAR */
+
+    ::-webkit-scrollbar{
+      width:10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:#ff5ca8;
+      border-radius:20px;
+    }
+
+    /* HEADER */
+
+    header{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(255,255,255,0.8);
+      backdrop-filter:blur(10px);
+      position:fixed;
+      top:0;
+      z-index:999;
+      box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .logo{
+      font-size:34px;
+      font-weight:800;
+      color:#ff4f9a;
+    }
+
+    nav a{
+      text-decoration:none;
+      margin-left:25px;
+      color:#444;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#ff4f9a;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:140px 8% 80px;
+      flex-wrap:wrap;
+      gap:50px;
+      position:relative;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:#ffd1e8;
+      border-radius:50%;
+      top:-150px;
+      right:-150px;
+      z-index:-1;
+    }
+
+    .hero-text{
+      flex:1;
+      min-width:320px;
+    }
+
+    .hero-text h1{
+      font-size:65px;
+      line-height:1.2;
+      color:#ff4f9a;
+      margin-bottom:25px;
+    }
+
+    .hero-text p{
+      font-size:18px;
+      line-height:1.8;
+      margin-bottom:35px;
+      color:#666;
+    }
+
+    .hero-btns{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 35px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:#ff4f9a;
+      color:white;
+      box-shadow:0 8px 20px rgba(255,79,154,0.3);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px);
+    }
+
+    .btn-secondary{
+      border:2px solid #ff4f9a;
+      color:#ff4f9a;
+    }
+
+    .btn-secondary:hover{
+      background:#ff4f9a;
+      color:white;
+    }
+
+    .hero img{
+      width:550px;
+      max-width:100%;
+      border-radius:30px;
+      box-shadow:0 15px 35px rgba(0,0,0,0.15);
+      animation:float 4s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%{transform:translateY(0);}
+      50%{transform:translateY(-15px);}
+      100%{transform:translateY(0);}
+    }
+
+    /* SEARCH */
+
+    .search-box{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      margin-top:20px;
+      flex-wrap:wrap;
+    }
+
+    .search-box input{
+      width:420px;
+      padding:16px;
+      border:none;
+      border-radius:50px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+      outline:none;
+      font-size:16px;
+    }
+
+    .search-box button{
+      padding:16px 30px;
+      border:none;
+      border-radius:50px;
+      background:#ff4f9a;
+      color:white;
+      cursor:pointer;
+      transition:0.3s;
+      font-weight:600;
+    }
+
+    .search-box button:hover{
+      background:#ff2f85;
+    }
+
+    /* SECTION */
+
+    section{
+      padding:90px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:45px;
+      color:#ff4f9a;
+      margin-bottom:15px;
+      font-weight:700;
+    }
+
+    .section-subtitle{
+      text-align:center;
+      color:#777;
+      margin-bottom:60px;
+    }
+
+    /* STATS */
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .stat-box{
+      background:white;
+      padding:35px;
+      border-radius:25px;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(0,0,0,0.05);
+      transition:0.3s;
+    }
+
+    .stat-box:hover{
+      transform:translateY(-10px);
+    }
+
+    .stat-box h2{
+      color:#ff4f9a;
+      font-size:45px;
+      margin-bottom:10px;
+    }
+
+    /* COURSES */
+
+    .course-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .course-card{
+      background:white;
+      border-radius:25px;
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      transition:0.4s;
+    }
+
+    .course-card:hover{
+      transform:translateY(-12px);
+    }
+
+    .course-card img{
+      width:100%;
+      height:230px;
+      object-fit:cover;
+    }
+
+    .course-content{
+      padding:25px;
+    }
+
+    .course-content h3{
+      color:#ff4f9a;
+      margin-bottom:12px;
+    }
+
+    .price{
+      margin-top:15px;
+      font-weight:700;
+      color:#ff2f85;
+    }
+
+    /* TEACHERS */
+
+    .teacher-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .teacher-card{
+      background:white;
+      padding:30px;
+      border-radius:25px;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(0,0,0,0.06);
+      transition:0.3s;
+    }
+
+    .teacher-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .teacher-card img{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      object-fit:cover;
+      margin-bottom:20px;
+      border:5px solid #ffd3e8;
+    }
+
+    .teacher-card h3{
+      color:#ff4f9a;
+      margin-bottom:10px;
+    }
+
+    /* FEATURES */
+
+    .features{
+      background:#ffeaf4;
+      border-radius:40px;
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .feature-box{
+      background:white;
+      padding:35px;
+      border-radius:25px;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .feature-box h3{
+      color:#ff4f9a;
+      margin:15px 0;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .contact-info h3{
+      color:#ff4f9a;
+      margin-bottom:15px;
+      font-size:28px;
+    }
+
+    .contact-info p{
+      margin-bottom:12px;
+      color:#666;
+    }
+
+    .contact-form{
+      background:white;
+      padding:35px;
+      border-radius:25px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:15px;
+      margin-bottom:18px;
+      border:none;
+      border-radius:15px;
+      background:#f7f7f7;
+      outline:none;
+    }
+
+    .contact-form button{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:50px;
+      background:#ff4f9a;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .contact-form button:hover{
+      background:#ff2f85;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#ff4f9a;
+      color:white;
+      text-align:center;
+      padding:30px;
+      margin-top:50px;
+    }
+
+    /* DARK MODE */
+
+    #darkBtn{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:#ff4f9a;
+      color:white;
+      border:none;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      cursor:pointer;
+      font-size:20px;
+      box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .dark{
+      background:#1d1d1d;
+      color:white;
+    }
+
+    .dark header{
+      background:rgba(30,30,30,0.8);
+    }
+
+    .dark nav a{
+      color:white;
+    }
+
+    .dark .course-card,
+    .dark .teacher-card,
+    .dark .feature-box,
+    .dark .contact-form,
+    .dark .stat-box{
+      background:#2b2b2b;
+      color:white;
+    }
+
+    .dark p{
+      color:#ddd;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      nav{
+        display:none;
+      }
+
+      .hero{
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:45px;
+      }
+
+      .hero-btns{
+        justify-content:center;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">Pink English</div>
+
+    <nav>
+      <a href="#">Trang chủ</a>
+      <a href="#courses">Khóa học</a>
+      <a href="#teachers">Giảng viên</a>
+      <a href="#contact">Liên hệ</a>
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <h1>Học Tiếng Anh Online Theo Phong Cách Hiện Đại 💖</h1>
+
+      <p>
+        Trải nghiệm nền tảng học tiếng Anh trực tuyến với giao diện
+        thẩm mỹ, bài học thú vị và giảng viên chất lượng giúp bạn
+        cải thiện kỹ năng nhanh chóng.
+      </p>
+
+      <div class="hero-btns">
+
+        <a href="#" class="btn btn-primary">Học ngay</a>
+
+        <a href="#" class="btn btn-secondary">Xem khóa học</a>
+
+      </div>
+
+      <div class="search-box">
+
+        <input type="text" placeholder="Tìm khóa học tiếng Anh...">
+
+        <button>Tìm kiếm</button>
+
+      </div>
+
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+
+  </section>
+
+  <!-- STATS -->
+
+  <section>
+
+    <div class="stats">
+
+      <div class="stat-box">
+        <h2>10K+</h2>
+        <p>Học viên</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>500+</h2>
+        <p>Bài học</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>50+</h2>
+        <p>Giảng viên</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>98%</h2>
+        <p>Hài lòng</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- COURSES -->
+
+  <section id="courses">
+
+    <h2 class="section-title">Khóa Học Nổi Bật</h2>
+
+    <p class="section-subtitle">
+      Những khóa học được yêu thích nhất dành cho sinh viên
+    </p>
+
+    <div class="course-container">
+
+      <div class="course-card">
+
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="course-content">
+
+          <h3>English Communication</h3>
+
+          <p>
+            Học giao tiếp tiếng Anh từ cơ bản đến nâng cao.
+          </p>
+
+          <div class="price">499.000đ</div>
+
+        </div>
+
+      </div>
+
+      <div class="course-card">
+
+        <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="course-content">
+
+          <h3>IELTS Listening</h3>
+
+          <p>
+            Luyện nghe chuẩn IELTS với audio giọng bản xứ.
+          </p>
+
+          <div class="price">699.000đ</div>
+
+        </div>
+
+      </div>
+
+      <div class="course-card">
+
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="course-content">
+
+          <h3>Vocabulary Master</h3>
+
+          <p>
+            Ghi nhớ từ vựng bằng flashcard và mini game.
+          </p>
+
+          <div class="price">399.000đ</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TEACHERS -->
+
+  <section id="teachers">
+
+    <h2 class="section-title">Giảng Viên Nổi Bật</h2>
+
+    <p class="section-subtitle">
+      Đội ngũ giáo viên chuyên nghiệp và tận tâm
+    </p>
+
+    <div class="teacher-container">
+
+      <div class="teacher-card">
+
+        <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+        <h3>Nguyễn Lan Anh</h3>
+
+        <p>IELTS 8.5 - 6 năm kinh nghiệm giảng dạy</p>
+
+      </div>
+
+      <div class="teacher-card">
+
+        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+        <h3>Trần Minh Khang</h3>
+
+        <p>Chuyên giao tiếp tiếng Anh cho sinh viên</p>
+
+      </div>
+
+      <div class="teacher-card">
+
+        <img src="https://randomuser.me/api/portraits/women/65.jpg">
+
+        <h3>Lê Mỹ Tiên</h3>
+
+        <p>Giảng viên phát âm và phản xạ giao tiếp</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section>
+
+    <div class="features">
+
+      <h2 class="section-title">Tại Sao Chọn Pink English?</h2>
+
+      <p class="section-subtitle">
+        Trải nghiệm học tập hiện đại và hiệu quả
+      </p>
+
+      <div class="feature-grid">
+
+        <div class="feature-box">
+          <h3>📚 Bài Học Đa Dạng</h3>
+          <p>Hơn 1000+ bài học từ cơ bản đến nâng cao.</p>
+        </div>
+
+        <div class="feature-box">
+          <h3>🎧 Audio Chuẩn</h3>
+          <p>Giọng đọc bản xứ giúp phát âm tốt hơn.</p>
+        </div>
+
+        <div class="feature-box">
+          <h3>💻 Học Mọi Lúc</h3>
+          <p>Hỗ trợ điện thoại, laptop và tablet.</p>
+        </div>
+
+        <div class="feature-box">
+          <h3>🌟 Chứng Chỉ Online</h3>
+          <p>Nhận chứng chỉ sau khi hoàn thành khóa học.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <h2 class="section-title">Liên Hệ</h2>
+
+    <p class="section-subtitle">
+      Đăng ký tư vấn miễn phí ngay hôm nay
+    </p>
+
+    <div class="contact">
+
+      <div class="contact-info">
+
+        <h3>Pink English Center 💖</h3>
+
+        <p>📍 TP. Hồ Chí Minh, Việt Nam</p>
+
+        <p>📞 0123 456 789</p>
+
+        <p>📧 pinkenglish@gmail.com</p>
+
+        <p>🕒 08:00 - 22:00</p>
+
+      </div>
+
+      <div class="contact-form">
+
+        <input type="text" placeholder="Họ và tên">
+
+        <input type="email" placeholder="Email">
+
+        <textarea rows="5" placeholder="Nội dung..."></textarea>
+
+        <button>Gửi liên hệ</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2026 Pink English | Thiết kế website học tiếng Anh hiện đại
+    </p>
+
+  </footer>
+
+  <!-- DARK MODE -->
+
+  <button id="darkBtn">🌙</button>
+
+  <script>
+
+    const darkBtn = document.getElementById("darkBtn");
+
+    darkBtn.onclick = function(){
+
+      document.body.classList.toggle("dark");
+
+    }
+
+  </script>
+
+</body>
+</html>
